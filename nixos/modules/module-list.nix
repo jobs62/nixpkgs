@@ -1922,6 +1922,7 @@
   ./virtualisation/oci-options.nix
   ./virtualisation/openstack-options.nix
   ./virtualisation/openvswitch.nix
+  ./virtualisation/outscale-image.nix
   ./virtualisation/parallels-guest.nix
   ./virtualisation/podman/default.nix
   ./virtualisation/qemu-guest-agent.nix

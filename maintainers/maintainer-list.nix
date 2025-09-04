@@ -12305,6 +12305,13 @@
     githubId = 60272884;
     name = "Jonathan Jeppener-Haltenhoff";
   };
+  jobs62 = {
+    email = "droper@analpahbet.me";
+    github = "jobs62";
+    name = "Ch.-David Blot";
+    githubId = 77263497;
+    keys = [ { fingerprint = "3F62 21E3 9F71 C3A2 30EC C91C 2BDD 9527 32D8 D98A"; } ];
+  };
   jocelynthode = {
     email = "jocelyn.thode@gmail.com";
     github = "jocelynthode";
