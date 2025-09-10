@@ -439,7 +439,7 @@ in
     imports = [ ./discourse.nix ];
     _module.args.package = pkgs.discourseAllPlugins;
   };
-  dnscrypt-proxy2 = runTestOn [ "x86_64-linux" ] ./dnscrypt-proxy2.nix;
+  dnscrypt-proxy = runTestOn [ "x86_64-linux" ] ./dnscrypt-proxy.nix;
   dnsdist = import ./dnsdist.nix { inherit pkgs runTest; };
   doas = runTest ./doas.nix;
   docker = runTestOn [ "aarch64-linux" "x86_64-linux" ] ./docker.nix;
@@ -494,7 +494,6 @@ in
   };
   ergo = runTest ./ergo.nix;
   ergochat = runTest ./ergochat.nix;
-  eris-server = runTest ./eris-server.nix;
   esphome = runTest ./esphome.nix;
   etc = pkgs.callPackage ../modules/system/etc/test.nix { inherit evalMinimalConfig; };
   activation = pkgs.callPackage ../modules/system/activation/test.nix { };
@@ -913,7 +912,6 @@ in
   metabase = runTest ./metabase.nix;
   mihomo = runTest ./mihomo.nix;
   mindustry = runTest ./mindustry.nix;
-  minecraft = runTest ./minecraft.nix;
   minecraft-server = runTest ./minecraft-server.nix;
   minidlna = runTest ./minidlna.nix;
   miniflux = runTest ./miniflux.nix;
@@ -1194,6 +1192,7 @@ in
   pict-rs = runTest ./pict-rs.nix;
   pingvin-share = runTest ./pingvin-share.nix;
   pinnwand = runTest ./pinnwand.nix;
+  pihole-ftl = import ./pihole-ftl { inherit runTest; };
   plantuml-server = runTest ./plantuml-server.nix;
   plasma6 = runTest ./plasma6.nix;
   plausible = runTest ./plausible.nix;
@@ -1291,6 +1290,7 @@ in
   redis = handleTest ./redis.nix { };
   redlib = runTest ./redlib.nix;
   redmine = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./redmine.nix { };
+  refind = runTest ./refind.nix;
   renovate = runTest ./renovate.nix;
   replace-dependencies = handleTest ./replace-dependencies { };
   reposilite = runTest ./reposilite.nix;
@@ -1373,6 +1373,7 @@ in
   sslh = handleTest ./sslh.nix { };
   ssh-agent-auth = runTest ./ssh-agent-auth.nix;
   ssh-audit = runTest ./ssh-audit.nix;
+  sshwifty = runTest ./web-apps/sshwifty/default.nix;
   sssd = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./sssd.nix { };
   sssd-ldap = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./sssd-ldap.nix { };
   stalwart-mail = runTest ./stalwart/stalwart-mail.nix;

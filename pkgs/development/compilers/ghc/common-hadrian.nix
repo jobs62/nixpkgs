@@ -36,7 +36,6 @@
 
   libiconv ? null,
   ncurses,
-  glibcLocales ? null,
 
   # GHC can be built with system libffi or a bundled one.
   libffi ? null,
@@ -274,17 +273,6 @@
             ../../tools/haskell/hadrian/disable-hyperlinked-source-extra-args.patch
         )
       ]
-      # Incorrect bounds on Cabal in hadrian
-      # https://gitlab.haskell.org/ghc/ghc/-/issues/24100
-      ++
-        lib.optionals
-          (lib.elem version [
-            "9.8.1"
-            "9.8.2"
-          ])
-          [
-            ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
-          ]
       ++ lib.optionals (lib.versionAtLeast version "9.8" && lib.versionOlder version "9.12") [
         (fetchpatch {
           name = "enable-ignore-build-platform-mismatch.patch";
@@ -560,8 +548,8 @@ stdenv.mkDerivation (
           "${buildTargetLlvmPackages.clang}/bin/${buildTargetLlvmPackages.clang.targetPrefix}clang"
       }"
     ''
-    + lib.optionalString (stdenv.hostPlatform.isLinux && hostPlatform.libc == "glibc") ''
-      export LOCALE_ARCHIVE="${glibcLocales}/lib/locale/locale-archive"
+    + lib.optionalString (stdenv.buildPlatform.libc == "glibc") ''
+      export LOCALE_ARCHIVE="${buildPackages.glibcLocales}/lib/locale/locale-archive"
     ''
     + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
       export NIX_LDFLAGS+=" -rpath $out/lib/ghc-${version}"

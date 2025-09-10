@@ -1805,6 +1805,8 @@ self: super: with self; {
 
   beanhub-import = callPackage ../development/python-modules/beanhub-import { };
 
+  beanhub-inbox = callPackage ../development/python-modules/beanhub-inbox { };
+
   beanquery = callPackage ../development/python-modules/beanquery { };
 
   beanstalkc = callPackage ../development/python-modules/beanstalkc { };
@@ -2820,6 +2822,8 @@ self: super: with self; {
       { };
 
   colcon-parallel-executor = callPackage ../development/python-modules/colcon-parallel-executor { };
+
+  colcon-recursive-crawl = callPackage ../development/python-modules/colcon-recursive-crawl { };
 
   colcon-ros-domain-id-coordinator =
     callPackage ../development/python-modules/colcon-ros-domain-id-coordinator
@@ -4266,6 +4270,8 @@ self: super: with self; {
 
   docling-jobkit = callPackage ../development/python-modules/docling-jobkit { };
 
+  docling-mcp = callPackage ../development/python-modules/docling-mcp { };
+
   docling-parse = callPackage ../development/python-modules/docling-parse {
     loguru-cpp = pkgs.loguru;
   };
@@ -4565,7 +4571,9 @@ self: super: with self; {
 
   ecdsa = callPackage ../development/python-modules/ecdsa { };
 
-  echo = callPackage ../development/python-modules/echo { };
+  echo = callPackage ../development/python-modules/echo {
+    inherit (pkgs) mesa;
+  };
 
   ecoaliface = callPackage ../development/python-modules/ecoaliface { };
 
@@ -4758,8 +4766,6 @@ self: super: with self; {
   equinox = callPackage ../development/python-modules/equinox { };
 
   eradicate = callPackage ../development/python-modules/eradicate { };
-
-  eris = callPackage ../development/python-modules/eris { };
 
   es-client = callPackage ../development/python-modules/es-client { };
 
@@ -5008,6 +5014,8 @@ self: super: with self; {
   fast-array-utils = callPackage ../development/python-modules/fast-array-utils { };
 
   fast-histogram = callPackage ../development/python-modules/fast-histogram { };
+
+  fast-query-parsers = callPackage ../development/python-modules/fast-query-parsers { };
 
   fast-simplification = callPackage ../development/python-modules/fast-simplification { };
 
@@ -8121,6 +8129,12 @@ self: super: with self; {
 
   libais = callPackage ../development/python-modules/libais { };
 
+  libapparmor = toPythonModule (
+    pkgs.libapparmor.override {
+      python3Packages = self;
+    }
+  );
+
   libarchive-c = callPackage ../development/python-modules/libarchive-c {
     inherit (pkgs) libarchive;
   };
@@ -8544,8 +8558,16 @@ self: super: with self; {
     callPackage ../development/python-modules/llama-index-multi-modal-llms-openai
       { };
 
+  llama-index-node-parser-docling =
+    callPackage ../development/python-modules/llama-index-node-parser-docling
+      { };
+
   llama-index-readers-database =
     callPackage ../development/python-modules/llama-index-readers-database
+      { };
+
+  llama-index-readers-docling =
+    callPackage ../development/python-modules/llama-index-readers-docling
       { };
 
   llama-index-readers-file = callPackage ../development/python-modules/llama-index-readers-file { };
@@ -8576,6 +8598,10 @@ self: super: with self; {
     callPackage ../development/python-modules/llama-index-vector-stores-google
       { };
 
+  llama-index-vector-stores-milvus =
+    callPackage ../development/python-modules/llama-index-vector-stores-milvus
+      { };
+
   llama-index-vector-stores-postgres =
     callPackage ../development/python-modules/llama-index-vector-stores-postgres
       { };
@@ -8587,6 +8613,8 @@ self: super: with self; {
   llama-index-workflows = callPackage ../development/python-modules/llama-index-workflows { };
 
   llama-parse = callPackage ../development/python-modules/llama-parse { };
+
+  llama-stack-client = callPackage ../development/python-modules/llama-stack-client { };
 
   llamaindex-py-client = callPackage ../development/python-modules/llamaindex-py-client { };
 
@@ -9177,6 +9205,8 @@ self: super: with self; {
 
   meshcat = callPackage ../development/python-modules/meshcat { };
 
+  meshcore = callPackage ../development/python-modules/meshcore { };
+
   meshio = callPackage ../development/python-modules/meshio { };
 
   meshlabxml = callPackage ../development/python-modules/meshlabxml { };
@@ -9641,7 +9671,9 @@ self: super: with self; {
 
   mpl-scatter-density = callPackage ../development/python-modules/mpl-scatter-density { };
 
-  mpl-typst = callPackage ../development/python-modules/mpl-typst { };
+  mpl-typst = callPackage ../development/python-modules/mpl-typst {
+    inherit (pkgs) typst;
+  };
 
   mplcursors = callPackage ../development/python-modules/mplcursors { };
 
@@ -10489,6 +10521,8 @@ self: super: with self; {
   nipy = callPackage ../development/python-modules/nipy { };
 
   nipype = callPackage ../development/python-modules/nipype { inherit (pkgs) which; };
+
+  niquests = callPackage ../development/python-modules/niquests { };
 
   nitime = callPackage ../development/python-modules/nitime { };
 
@@ -11657,6 +11691,8 @@ self: super: with self; {
       { };
 
   piccata = callPackage ../development/python-modules/piccata { };
+
+  piccolo = callPackage ../development/python-modules/piccolo { };
 
   piccolo-theme = callPackage ../development/python-modules/piccolo-theme { };
 
@@ -12851,8 +12887,6 @@ self: super: with self; {
 
   pyecharts = callPackage ../development/python-modules/pyecharts { };
 
-  pyechonest = callPackage ../development/python-modules/pyechonest { };
-
   pyeclib = callPackage ../development/python-modules/pyeclib { };
 
   pyecoforest = callPackage ../development/python-modules/pyecoforest { };
@@ -13190,6 +13224,8 @@ self: super: with self; {
 
   pyjnius = callPackage ../development/python-modules/pyjnius { };
 
+  pyjpegls = callPackage ../development/python-modules/pyjpegls { };
+
   pyjson5 = callPackage ../development/python-modules/pyjson5 { };
 
   pyjsparser = callPackage ../development/python-modules/pyjsparser { };
@@ -13289,6 +13325,8 @@ self: super: with self; {
   pylibjpeg-libjpeg = callPackage ../development/python-modules/pylibjpeg-libjpeg { };
 
   pylibjpeg-openjpeg = callPackage ../development/python-modules/pylibjpeg-openjpeg { };
+
+  pylibjpeg-rle = callPackage ../development/python-modules/pylibjpeg-rle { };
 
   pyliblo3 = callPackage ../development/python-modules/pyliblo3 { };
 
@@ -14967,6 +15005,8 @@ self: super: with self; {
 
   python-pkcs11 = callPackage ../development/python-modules/python-pkcs11 { };
 
+  python-pooldose = callPackage ../development/python-modules/python-pooldose { };
+
   python-poppler = callPackage ../development/python-modules/python-poppler { };
 
   python-pptx = callPackage ../development/python-modules/python-pptx { };
@@ -15423,6 +15463,10 @@ self: super: with self; {
 
   qgrid = callPackage ../development/python-modules/qgrid { };
 
+  qh3 = callPackage ../development/python-modules/qh3 {
+    inherit (pkgs) cmake;
+  };
+
   qiling = callPackage ../development/python-modules/qiling { };
 
   qimage2ndarray = callPackage ../development/python-modules/qimage2ndarray { };
@@ -15586,6 +15630,8 @@ self: super: with self; {
   rapidfuzz-capi = callPackage ../development/python-modules/rapidfuzz-capi { };
 
   rapidgzip = callPackage ../development/python-modules/rapidgzip { inherit (pkgs) nasm; };
+
+  rapidocr = callPackage ../development/python-modules/rapidocr { };
 
   rapidocr-onnxruntime = callPackage ../development/python-modules/rapidocr-onnxruntime { };
 
@@ -16103,7 +16149,13 @@ self: super: with self; {
 
   rpmfluff = callPackage ../development/python-modules/rpmfluff { };
 
-  rpy2 = callPackage ../development/python-modules/rpy2 { inherit (pkgs) zstd; };
+  rpy2 = callPackage ../development/python-modules/rpy2 { };
+
+  rpy2-rinterface = callPackage ../development/python-modules/rpy2-rinterface {
+    inherit (pkgs) zstd;
+  };
+
+  rpy2-robjects = callPackage ../development/python-modules/rpy2-robjects { };
 
   rpyc = callPackage ../development/python-modules/rpyc { };
 
@@ -17900,6 +17952,8 @@ self: super: with self; {
 
   tapsaff = callPackage ../development/python-modules/tapsaff { };
 
+  targ = callPackage ../development/python-modules/targ { };
+
   tasklib = callPackage ../development/python-modules/tasklib { };
 
   taskw = callPackage ../development/python-modules/taskw { };
@@ -18329,9 +18383,14 @@ self: super: with self; {
 
   tivars = callPackage ../development/python-modules/tivars { };
 
-  tkinter = callPackage ../development/python-modules/tkinter {
-    py = python.override (lib.optionalAttrs (!python.isPyPy) { x11Support = true; });
-  };
+  tkinter =
+    if isPyPy then
+      null
+    else
+      callPackage ../development/python-modules/tkinter {
+        tcl = pkgs.tcl-9_0;
+        tk = pkgs.tk-9_0;
+      };
 
   tkinter-gl = callPackage ../development/python-modules/tkinter-gl { };
 
@@ -18794,6 +18853,8 @@ self: super: with self; {
   typer = callPackage ../development/python-modules/typer { };
 
   typer-shell = callPackage ../development/python-modules/typer-shell { };
+
+  typer-slim = self.typer.override { package = "typer-slim"; };
 
   types-aiobotocore = callPackage ../development/python-modules/types-aiobotocore { };
 
@@ -19473,6 +19534,8 @@ self: super: with self; {
 
   urllib3 = callPackage ../development/python-modules/urllib3 { };
 
+  urllib3-future = callPackage ../development/python-modules/urllib3-future { };
+
   urlman = callPackage ../development/python-modules/urlman { };
 
   urlmatch = callPackage ../development/python-modules/urlmatch { };
@@ -19722,8 +19785,6 @@ self: super: with self; {
 
   vttlib = callPackage ../development/python-modules/vttlib { };
 
-  vulcan-api = callPackage ../development/python-modules/vulcan-api { };
-
   vulkan = callPackage ../development/python-modules/vulkan { };
 
   vultr = callPackage ../development/python-modules/vultr { };
@@ -19800,6 +19861,8 @@ self: super: with self; {
   wasmerPackages = pkgs.recurseIntoAttrs (callPackage ../development/python-modules/wasmer { });
 
   wasserstein = callPackage ../development/python-modules/wasserstein { };
+
+  wassima = callPackage ../development/python-modules/wassima { };
 
   wat = callPackage ../development/python-modules/wat { };
 

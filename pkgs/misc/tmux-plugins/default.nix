@@ -127,7 +127,7 @@ in
       description = "Soothing pastel theme for Tmux";
       license = licenses.mit;
       platforms = platforms.unix;
-      maintainers = with maintainers; [ jnsgruk ];
+      maintainers = with maintainers; [ ];
     };
   };
 
@@ -448,6 +448,33 @@ in
       repo = "tmux-logging";
       rev = "b085ad423b5d59a2c8b8d71772352e7028b8e1d0";
       hash = "sha256-Wp4xY2nxv4jl/G7bjNokYk3TcbS9waLERBFSpT1XGlw=";
+    };
+  };
+
+  minimal-tmux-status = mkTmuxPlugin {
+    pluginName = "minimal-tmux-status";
+    rtpFilePath = "minimal.tmux";
+    version = "0-unstable-2025-06-04";
+    src = fetchFromGitHub {
+      owner = "niksingh710";
+      repo = "minimal-tmux-status";
+      rev = "de2bb049a743e0f05c08531a0461f7f81da0fc72";
+      hash = "sha256-0gXtFVan+Urb79AjFOjHdjl3Q73m8M3wFSo3ZhjxcBA=";
+    };
+    meta = {
+      description = "Minimal tmux status line plugin with prefix key indicator";
+      longDescription = ''
+        minimal-tmux-status is a lightweight plugin for tmux that provides a simple, customizable status line.
+        In addition to basic session info, it shows whether the tmux prefix key is currently pressed, helping users
+        quickly identify the prefix state. Designed to be minimal in appearance and dependencies, it is ideal for users
+        who want essential information without clutter.
+      '';
+      homepage = "https://github.com/niksingh710/minimal-tmux-status.git";
+      license = lib.licenses.mit;
+      maintainers = with lib.maintainers; [
+        niksingh710
+      ];
+      platforms = lib.platforms.unix;
     };
   };
 
